@@ -57,6 +57,14 @@ def single_fold(train_range: tuple, data):
     precision = met.precision_score(Y_real, Y_predict)
     recall = met.recall_score(Y_real, Y_predict)
 
+    # tp = sum(np.logical_and(Y_predict, Y_real))
+    # fp = sum(np.logical_and(Y_predict, np.logical_not(Y_real)))
+    # tn = sum(np.logical_and(np.logical_not(Y_predict), np.logical_not(Y_real)))
+    # fn = sum(np.logical_and(Y_real, np.logical_not(Y_predict)))
+    # accuracy = (tp + tn) / (tp + tn + fp + fn)
+    # precision = tp / (tp + fp)
+    # recall = tp / (tp + fn)
+
     return accuracy, precision, recall
 
 
