@@ -228,24 +228,39 @@ Use this latex file as a template to develop your homework. Submit your homework
 	      \begin{enumerate}
 		      \item (2pts) Suppose that we have a set of observations, each with measurements on $p=1$ feature, $X$. We assume that $X$ is uniformly (evenly) distributed on [0, 1]. Associated with each observation is a response value. Suppose that we wish to predict a test observation’s response using only observations that are within 10\% of the range of $X$ closest to that test observation. For instance, in order to predict the response for a test observation with $X=0.6$, we will use observations in the range [0.55, 0.65]. On average, what fraction of the available observations will we use to make the prediction?
 
-		            \begin{soln}  Solution goes here. \end{soln}
+		            \begin{soln}
+			            0.1
+		            \end{soln}
 
 
 		      \item (2pts) Now suppose that we have a set of observations, each with measurements on $p =2$ features, $X1$ and $X2$. We assume that predict a test observation’s response using only observations that $(X1,X2)$ are uniformly distributed on [0, 1] × [0, 1]. We wish to are within 10\% of the range of $X1$ and within 10\% of the range of $X2$ closest to that test observation. For instance, in order to predict the response for a test observation with $X1 =0.6$ and $X2 =0.35$, we will use observations in the range [0.55, 0.65] for $X1$ and in the range [0.3, 0.4] for $X2$. On average, what fraction of the available observations will we use to make the prediction?
 
-		            \begin{soln}  Solution goes here. \end{soln}
+		            \begin{soln}
+			            $0.1 \times 0.1 = 0.01$
+		            \end{soln}
 
 		      \item (2pts) Now suppose that we have a set of observations on $p = 100$ features. Again the observations are uniformly distributed on each feature, and again each feature ranges in value from 0 to 1. We wish to predict a test observation’s response using observations within the 10\% of each feature’s range that is closest to that test observation. What fraction of the available observations will we use to make the prediction?
 
-		            \begin{soln}  Solution goes here. \end{soln}
+		            \begin{soln}
+			            $0.1^{100}$
+		            \end{soln}
 
 		      \item (3pts) Using your answers to parts (a)–(c), argue that a drawback of KNN when p is large is that there are very few training observations “near” any given test observation.
 
-		            \begin{soln}  Solution goes here. \end{soln}
+		            \begin{soln}
+			            As we can see from (a) - (c), when p grows larger, the training observations we can use are decresing exponentially. Which means in high dimension space, there are fewer training observations we can use to make predictions, and the model's might not be able to perform well.
+		            \end{soln}
 
 		      \item (3pts) Now suppose that we wish to make a prediction for a test observation by creating a $p$-dimensional hypercube centered around the test observation that contains, on average, 10\% of the training observations. For $p =$1, 2, and 100, what is the length of each side of the hypercube? Comment what happens to the length of the sides as $\lim_{{n \to \infty}}$.
 
-		            \begin{soln}  Solution goes here. \end{soln}
+		            \begin{soln}
+			            \begin{enumerate}
+				            \item When p = 1: 0.1
+				            \item When p = 2: the hypercude is a square whose area is 0.1, so the length of each side is $\sqrt{0.1}$.
+				            \item When p = 100: same logic, $\sqrt[100]{0.1}$
+				            \item When $\lim_{p \to \infty}$: the length of each side ($\lim_{p \to \infty} \sqrt[p]{0.1}$) approaches 0.
+			            \end{enumerate}
+		            \end{soln}
 
 	      \end{enumerate}
 
