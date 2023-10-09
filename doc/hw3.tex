@@ -359,11 +359,12 @@ Use this latex file as a template to develop your homework. Submit your homework
 
 		            \begin{soln}
 			            \begin{align*}
-				            L(\hat{y}, y)                      & = -[y \log \hat{y} + (1 - y) \log(1 - \hat{y})]                                                                                                                                                                                                                  \\
-				                                               & = -[y \log \sigma(\theta^\top x) + (1 - y) \log(1 - \sigma(\theta^\top x))]\\\\
-				            \frac{\partial L}{\partial \theta_i} & = -\left[y \left(\frac{1}{{\sigma(\theta^\top x)}}\right) \sigma(\theta^\top x) \left(1 - \sigma(\theta^\top x)\right) x_i + (1 - y) \left(-\frac{1}{{1 - \sigma(\theta^\top x)}}\right) \sigma(\theta^\top x) \left(1 - \sigma(\theta^\top x)\right) x_i\right] \\
-				                                               & = -\left[y (1 - \sigma(\theta^\top x)) x_i - (1 - y) \sigma(\theta^\top x) x_i\right]                                                                                                                                                                            \\
-				                                               & = -(y - \hat{y}) x_i
+				            L(\hat{y}, y)                      & = -[y \log \hat{y} + (1 - y) \log(1 - \hat{y})]                                                                                                                                                                                                              \\
+				                                               & = -[y \log \sigma(\theta^\top x) + (1 - y) \log(1 - \sigma(\theta^\top x))]                                                                                                                                                                                  \\\\
+				            \frac{\partial L}{\partial \theta} & = -\left[y \cdot \frac{1}{\hat{y}} \cdot \frac{\partial \hat{y}}{\partial \theta} + (1-y) \cdot \frac{1}{1 - \hat{y}} \cdot \frac{\partial (1-\hat{y})}{\partial \theta}\right]                                                                              \\
+				                                               & = -\left[y \left(\frac{1}{{\sigma(\theta^\top x)}}\right) \sigma(\theta^\top x) \left(1 - \sigma(\theta^\top x)\right) x + (1 - y) \left(-\frac{1}{{1 - \sigma(\theta^\top x)}}\right) \sigma(\theta^\top x) \left(1 - \sigma(\theta^\top x)\right) x\right] \\
+				                                               & = -\left[y (1 - \sigma(\theta^\top x)) x - (1 - y) \sigma(\theta^\top x) x\right]                                                                                                                                                                            \\
+				                                               & = (\hat{y} - y) \cdot x
 			            \end{align*}
 		            \end{soln}
 
@@ -374,11 +375,13 @@ Use this latex file as a template to develop your homework. Submit your homework
 		            Compute the updated parameter vector $\theta^{1}$ from the single update step.
 
 		            \begin{soln}
-									todo
+			            todo
 		            \end{soln}
 
 	      \end{enumerate}
 \end{enumerate}
+
+\pagebreak
 
 \section{Programming (50 pts)}
 \begin{enumerate}
@@ -392,6 +395,13 @@ Use this latex file as a template to develop your homework. Submit your homework
 		      \centering
 		      \includegraphics[width=5cm]{implementation1_expected_result.png}
 	      \end{figure}
+
+	      \begin{soln}
+		      \begin{figure}[h]
+			      \centering
+			      \includegraphics[width=0.7\textwidth]{../img/q2-1.png}
+		      \end{figure}
+	      \end{soln}
 
 	      \paragraph{Spam filter} Now, we will use 'emails.csv' as our dataset. The description is as follows.
 	      \begin{figure}[h]
