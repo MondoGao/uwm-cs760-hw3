@@ -427,7 +427,21 @@ Use this latex file as a template to develop your homework. Submit your homework
 
 	\item (8 pts) Implement 1NN, Run 5-fold cross validation. Report accuracy, precision, and recall in each fold.
 
-	      \begin{soln}  Solution goes here. \end{soln}
+	      \begin{soln}
+		      \begin{center}
+			      \begin{tabular}{ c  c  c  c}
+				      \hline
+				      Fold & Accuracy & Precision          & Recall             \\ \hline
+				      1    & 0.78875  & 0.6276252019386107 & 0.6692506459948321 \\
+				      2    & 0.76575  & 0.5778523489932886 & 0.7365269461077845 \\
+				      3    & 0.78675  & 0.6075156576200418 & 0.7512908777969018 \\
+				      4    & 0.76725  & 0.5714285714285714 & 0.7673611111111112 \\
+				      5    & 0.753    & 0.5528511821974965 & 0.6973684210526315 \\
+				      \hline
+			      \end{tabular}
+		      \end{center}
+	      \end{soln}
+
 
 	\item (12 pts) Implement logistic regression (from scratch). Use gradient descent (refer to question 6 from part 1) to find the optimal parameters. You may need to tune your learning rate to find a good optimum. Run 5-fold cross validation. Report accuracy, precision, and recall in each fold.
 
