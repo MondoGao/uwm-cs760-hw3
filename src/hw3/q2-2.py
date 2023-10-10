@@ -24,9 +24,9 @@ def main():
     ]
     # debug
     # data = data[:100]
-    cross_ranges = [
-        [0, 1000],
-    ]
+    # cross_ranges = [
+    #     [0, 1000],
+    # ]
 
     for idx, train_range in enumerate(cross_ranges):
         accuracy, precision, recall = single_fold(tuple(train_range), data)
