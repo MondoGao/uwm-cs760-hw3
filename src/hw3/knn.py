@@ -20,20 +20,20 @@ class KNN:
         return most_common_class
 
     # use the same name with skilearn
-    def predict_proba(self, X, target_label):
+    def predict_proba(self, X, target_label=1):
         return [self.predict_proba_single(x, target_label) for x in X]
 
     def predict_proba_single(self, x, target_label=1):
-        class_votes = self.predict_vote(x)
+        class_votes = self._predict_vote_single(x)
 
         # assertion: label in (0, 1)
         class_probabilities = {}
-        total_neighbors = len(self.k)
+        total_neighbors = self.k
         for label, count in class_votes.items():
             class_probabilities[label] = count / total_neighbors
-        
+
         if not (target_label in class_probabilities):
-          raise Exception('target_label do not exist')
+            raise Exception("target_label do not exist")
 
         return class_probabilities[target_label]
 
