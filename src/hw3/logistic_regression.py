@@ -26,20 +26,23 @@ def logistic_regression(theta, X):
     return sigmoid(np.dot(X, theta))
 
 
-def cost_function(y, y_pred):
-    m = len(y)
-    return -1 / m * np.sum(y * np.log(y_pred) + (1 - y) * np.log(1 - y_pred))
+def cost_function(Y_real, Y_pred):
+    data_len = len(Y_real)
+    return -1 / data_len * np.sum(Y_real * np.log(Y_pred) + (1 - Y_real) * np.log(1 - Y_pred)) 
 
 
-def gradient_descent(X, y, theta, learning_rate, num_iterations):
-    m = len(y)
+
+def gradient_descent(X, Y, theta, learning_rate, num_iterations):
+    m = len(Y)
     for iteration in range(num_iterations):
-        y_pred = logistic_regression(theta, X)
+        Y_pred = logistic_regression(theta, X)
 
-        gradient = np.dot(X.T, (y_pred - y)) / m
+        gradient = np.dot(X.T, (Y_pred - Y)) / m
 
         theta -= learning_rate * gradient
 
-        cost = cost_function(y, y_pred)
+        cost = cost_function(Y, Y_pred)
 
     return theta
+
+
