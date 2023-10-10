@@ -30,18 +30,18 @@ def main():
 
 
 def single_fold(
-    train_range: tuple[int, int], data, learning_rate=0.1, num_iterations=1000
+    test_range: tuple[int, int], data, learning_rate=0.1, max_iterations=1000
 ):
-    start, end = train_range
-    train_data = data[start:end]
-    test_data = np.concatenate((data[:start], data[end:]))
+    start, end = test_range
+    test_data = data[start:end]
+    train_data = np.concatenate((data[:start], data[end:]))
 
     X_train = train_data[:, 0:-1]
     Y_train = train_data[:, -1].flatten()
     X_test = test_data[:, 0:-1]
     Y_test = test_data[:, -1].flatten()
 
-    lg = LogisticRegression(learning_rate=learning_rate, num_iterations=num_iterations)
+    lg = LogisticRegression(learning_rate=learning_rate, max_iterations=max_iterations)
     lg.fit(X_train, Y_train)
 
     Y_pred = lg.predict(X_test)
