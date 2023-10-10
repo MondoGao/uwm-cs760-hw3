@@ -30,10 +30,10 @@ def main():
         )
 
 
-def single_fold(train_range: tuple[int, int], data):
-    start, end = train_range
-    train_data = data[start:end]
-    test_data = np.concatenate((data[:start], data[end:]))
+def single_fold(test_range: tuple[int, int], data):
+    start, end = test_range
+    test_data = data[start:end]
+    train_data = np.concatenate((data[:start], data[end:]))
     # print(train_data.shape)
     # print(test_data.shape)
 
