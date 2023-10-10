@@ -33,7 +33,7 @@ class KNN:
             class_probabilities[label] = count / total_neighbors
 
         if not (target_label in class_probabilities):
-            raise Exception("target_label do not exist")
+            return 0
 
         return class_probabilities[target_label]
 

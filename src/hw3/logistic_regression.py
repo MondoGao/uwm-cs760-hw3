@@ -5,44 +5,36 @@ from dataclasses import dataclass
 @dataclass
 class LogisticRegression:
     learning_rate: float = 0.1
-    num_iterations: int = 1000
+    max_iterations: int = 1000
     theta = None
 
     def fit(self, X, y):
         self.theta = np.zeros(X.shape[1])
-        self.theta = gradient_descent(
-            X, y, self.theta, self.learning_rate, self.num_iterations
-        )
+        self.gradient_descent(X, y)
 
-    def predict(self, X_test):
-        return logistic_regression(self.theta, X_test)
+    def predict_proba(self, X):
+        z = np.dot(X, self.theta)
+        return self.sigmoid(z)
 
+    def predict(self, X, threshold=0.5):
+        probabilities = self.predict_proba(X)
+        predictions = (probabilities >= threshold).astype(int)
+        return predictions
 
-def sigmoid(z):
-    return 1 / (1 + np.exp(-z))
+    def gradient_descent(self, X, y):
+        data_len, feat_num = X.shape
+        self.theta = np.zeros(feat_num)
 
+        for _ in range(self.max_iterations):
+            z = np.dot(X, self.theta)
+            h = self.sigmoid(z)
+            gradient = np.dot(X.T, (h - y)) / data_len
+            self.theta -= self.learning_rate * gradient
 
-def logistic_regression(theta, X):
-    return sigmoid(np.dot(X, theta))
+    def sigmoid(self, z):
+        return 1 / (1 + np.exp(-z))
 
-
-def cost_function(Y_real, Y_pred):
-    data_len = len(Y_real)
-    return -1 / data_len * np.sum(Y_real * np.log(Y_pred) + (1 - Y_real) * np.log(1 - Y_pred)) 
-
-
-
-def gradient_descent(X, Y, theta, learning_rate, num_iterations):
-    m = len(Y)
-    for iteration in range(num_iterations):
-        Y_pred = logistic_regression(theta, X)
-
-        gradient = np.dot(X.T, (Y_pred - Y)) / m
-
-        theta -= learning_rate * gradient
-
-        cost = cost_function(Y, Y_pred)
-
-    return theta
-
+    def compute_loss(self, y, h):
+        epsilon = 1e-15
+        return -np.mean(y * np.log(h + epsilon) + (1 - y) * np.log(1 - h + epsilon))
 

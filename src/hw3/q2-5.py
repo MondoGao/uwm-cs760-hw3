@@ -20,8 +20,8 @@ def main():
     plt.xlabel("False Positive Rate (Positive label: 1)")
     plt.ylabel("True Positive Rate (Positive label: 1)")
 
-    knn(train_data, test_data)
     lg(train_data, test_data)
+    knn(train_data, test_data)
 
     plt.legend(loc="lower right")
     plt.show()
@@ -36,7 +36,7 @@ def knn(train_data, test_data):
     X_test = test_data[:, 0:-1]
     Y_real = test_data[:, -1].flat
 
-    Y_prob = knn.predict_proba(X_test, 1)[:, 1]
+    Y_prob = knn.predict_proba(X_test, 1)
     fpr, tpr, thresholds = met.roc_curve(Y_real, Y_prob)
     auc = met.auc(fpr, tpr)
 
@@ -44,14 +44,14 @@ def knn(train_data, test_data):
 
 def lg(train_data, test_data):
     X_train = train_data[:, 0:-1]
-    Y_train = train_data[:, -1].flat
-    lg = LogisticRegression(num_iterations=100)
+    Y_train = train_data[:, -1].flatten()
+    lg = LogisticRegression(max_iterations=1000)
     lg.fit(X_train, Y_train)
 
     X_test = test_data[:, 0:-1]
-    Y_real = test_data[:, -1].flat
+    Y_real = test_data[:, -1].flatten()
 
-    Y_prob = lg.predict_proba(X_test)[:, 1]
+    Y_prob = lg.predict_proba(X_test)
     fpr, tpr, thresholds = met.roc_curve(Y_real, Y_prob)
     auc = met.auc(fpr, tpr)
 
