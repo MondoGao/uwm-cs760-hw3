@@ -1,9 +1,8 @@
 import math
 import numpy as np
 from matplotlib import pyplot as plt
+from sklearn.neighbors import KNeighborsClassifier
 import sklearn.metrics as met
-
-from hw3.knn import KNN
 
 
 def main():
@@ -15,8 +14,9 @@ def main():
         dtype=int,
     )
     ks = [1, 3, 5, 7, 10]
-    ks = [1, 3]
+    # ks = [1, 3]
     accuracies = [run_knn(data, k) for k in ks]
+    # print(accuracies)
 
     plt.plot(ks, accuracies, marker="o")
     for idx, k in enumerate(ks):
@@ -47,7 +47,7 @@ def single_fold(test_range: tuple, data, k: int) -> float:
 
     X_train = train_data[:, 0:-1]
     Y_train = train_data[:, -1].flat
-    knn = KNN(k=k)
+    knn = KNeighborsClassifier(n_neighbors=k)
     knn.fit(X_train, Y_train)
 
     X_test = test_data[:, 0:-1]

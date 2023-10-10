@@ -14,7 +14,6 @@ def main():
         usecols=range(1, 3002),
         dtype=int,
     )
-    # print(data.shape)
     cross_ranges = [
         [0, 1000],
         [1000, 2000],
