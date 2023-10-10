@@ -15,7 +15,8 @@ def main():
         dtype=int,
     )
     ks = [1, 3, 5, 7, 10]
-    ks = [1, 3]
+    # debug
+    # ks = [1]
     accuracies = [run_knn(data, k) for k in ks]
 
     plt.plot(ks, accuracies, marker="o")

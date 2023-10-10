@@ -471,7 +471,7 @@ Use this latex file as a template to develop your homework. Submit your homework
 			      \end{tabular}
 		      \end{center}
 	      \end{soln}
-
+	      \pagebreak
 	\item (10 pts) Run 5-fold cross validation with kNN varying k (k=1, 3, 5, 7, 10). Plot the average accuracy versus k, and list the average accuracy of each case. \\
 	      Expected figure looks like this.
 	      \begin{figure}[h]
@@ -482,7 +482,9 @@ Use this latex file as a template to develop your homework. Submit your homework
 	      \begin{soln}
 		      \begin{figure}[h]
 			      \centering
-			      \includegraphics[width=0.7\textwidth]{../img/q2-4.png}
+			      \includegraphics[width=0.7\textwidth]{../img/q2-4-ski.png}
+			      \caption*{figure result from skilearn\textsuperscript{[1]}}
+			      \small\textsuperscript{[1]} I used skilearn's result to draw this figure, and the result is slightly different from my own implementation. I do implement two versions of the algorithm (q2-4.py and q2-4\_ski.py), and I give my algorithm the same interface with skilearn, but it just run too slow. When I test the first fold, I get a same result from both algorithm, so I decide to put data from skilearn here.
 		      \end{figure}
 
 		      \begin{center}
@@ -500,6 +502,7 @@ Use this latex file as a template to develop your homework. Submit your homework
 
 	      \end{soln}
 
+	      \pagebreak
 	\item (10 pts) Use a single training/test setting. Train kNN (k=5) and logistic regression on the training set, and draw ROC curves based on the test set. \\
 	      Expected figure looks like this.
 	      \begin{figure}[h]
@@ -509,9 +512,11 @@ Use this latex file as a template to develop your homework. Submit your homework
 	      Note that the logistic regression results may differ.
 
 	      \begin{soln}
+		      Traning Set: Email 1-2500 \\
+		      Test Set: Email 2501-5000 \\
 		      \begin{figure}[h!]
 			      \centering
-			      \includegraphics[width=0.7\textwidth]{../img/q2-5.png}
+			      \includegraphics[width=0.7\textwidth]{../img/q2-5-ski.png}
 		      \end{figure}
 	      \end{soln}
 

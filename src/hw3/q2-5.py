@@ -16,8 +16,14 @@ def main():
     )
     train_data = data[:2500]
     test_data = data[2500:]
+
+    plt.xlabel("False Positive Rate (Positive label: 1)")
+    plt.ylabel("True Positive Rate (Positive label: 1)")
+
     knn(train_data, test_data)
     lg(train_data, test_data)
+
+    plt.legend(loc="lower right")
     plt.show()
 
 
@@ -34,9 +40,7 @@ def knn(train_data, test_data):
     fpr, tpr, thresholds = met.roc_curve(Y_real, Y_prob)
     auc = met.auc(fpr, tpr)
 
-    plt.plot(fpr, tpr, 'b')
-    plt.xlabel("False Positive Rate (Positive label: 1)")
-    plt.ylabel("True Positive Rate (Positive label: 1)")
+    plt.plot(fpr, tpr, 'b', label=f"kNN (AUC={auc:0.2f})")
 
 def lg(train_data, test_data):
     X_train = train_data[:, 0:-1]
@@ -51,9 +55,7 @@ def lg(train_data, test_data):
     fpr, tpr, thresholds = met.roc_curve(Y_real, Y_prob)
     auc = met.auc(fpr, tpr)
 
-    plt.plot(fpr, tpr, 'y')
-    plt.xlabel("False Positive Rate (Positive label: 1)")
-    plt.ylabel("True Positive Rate (Positive label: 1)")
+    plt.plot(fpr, tpr, c='orange', label=f"Logistic Regression (AUC={auc:0.2f})")
 
 
 if __name__ == "__main__":
