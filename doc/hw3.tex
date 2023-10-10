@@ -429,7 +429,7 @@ Use this latex file as a template to develop your homework. Submit your homework
 
 	      \begin{soln}
 		      \begin{center}
-			      \begin{tabular}{ c  c  c  c}
+			      \begin{tabular}{c c c c}
 				      \hline
 				      Fold & Accuracy & Precision          & Recall             \\ \hline
 				      1    & 0.78875  & 0.6276252019386107 & 0.6692506459948321 \\
@@ -445,7 +445,20 @@ Use this latex file as a template to develop your homework. Submit your homework
 
 	\item (12 pts) Implement logistic regression (from scratch). Use gradient descent (refer to question 6 from part 1) to find the optimal parameters. You may need to tune your learning rate to find a good optimum. Run 5-fold cross validation. Report accuracy, precision, and recall in each fold.
 
-	      \begin{soln}  Solution goes here. \end{soln}
+	      \begin{soln}
+		      \begin{center}
+			      \begin{tabular}{c c c c}
+				      \hline
+				      Fold & Accuracy & Precision          & Recall             \\ \hline
+				      1    & 0.86975  & 0.8047619047619048 & 0.7278208440999139 \\
+				      2    & 0.87675  & 0.8414141414141414 & 0.7125748502994012 \\
+				      3    & 0.8875   & 0.7951907131011609 & 0.8253012048192772 \\
+				      4    & 0.79025  & 0.9086161879895561 & 0.3020833333333333 \\
+				      5    & 0.891    & 0.7988115449915111 & 0.8254385964912281 \\
+				      \hline
+			      \end{tabular}
+		      \end{center}
+	      \end{soln}
 
 	\item (10 pts) Run 5-fold cross validation with kNN varying k (k=1, 3, 5, 7, 10). Plot the average accuracy versus k, and list the average accuracy of each case. \\
 	      Expected figure looks like this.
@@ -485,11 +498,11 @@ Use this latex file as a template to develop your homework. Submit your homework
 
 	      \begin{soln}
 		      \begin{figure}[h!]
-						\centering
+			      \centering
 			      \includegraphics[width=0.7\textwidth]{../img/q2-5.png}
 		      \end{figure}
 	      \end{soln}
-			
+
 \end{enumerate}
 \bibliographystyle{apalike}
 \end{document}
