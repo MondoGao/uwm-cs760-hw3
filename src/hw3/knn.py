@@ -4,30 +4,40 @@ from dataclasses import dataclass
 
 @dataclass
 class KNN:
-    k: int = 3
+    k: int = 1
 
     def fit(self, X_train, Y_train):
         self.X_train = X_train
         self.Y_train = Y_train
 
-    def predict(self, x):
-        class_votes = self.predict_vote(x)
+    def predict(self, X):
+        return [self.predict_single(x) for x in X]
+
+    def predict_single(self, x):
+        class_votes = self._predict_vote_single(x)
         # we choose to use a simple majority vote
         most_common_class = max(class_votes, key=class_votes.get)
         return most_common_class
 
     # use the same name with skilearn
-    def predict_proba():
+    def predict_proba(self, X, target_label):
+        return [self.predict_proba_single(x, target_label) for x in X]
+
+    def predict_proba_single(self, x, target_label=1):
         class_votes = self.predict_vote(x)
 
+        # assertion: label in (0, 1)
         class_probabilities = {}
         total_neighbors = len(self.k)
         for label, count in class_votes.items():
             class_probabilities[label] = count / total_neighbors
+        
+        if not (target_label in class_probabilities):
+          raise Exception('target_label do not exist')
 
-        return class_probabilities
+        return class_probabilities[target_label]
 
-    def predict_vote(self, x):
+    def _predict_vote_single(self, x) -> dict:
         # [[dist, label], ...]
         distances = []
         data_len = len(self.X_train)

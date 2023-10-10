@@ -1,9 +1,8 @@
 import math
 import numpy as np
 from matplotlib import pyplot as plt
+from sklearn.neighbors import KNeighborsClassifier
 import sklearn.metrics as met
-
-from hw3.knn import KNN
 
 
 def main():
@@ -14,18 +13,13 @@ def main():
         usecols=range(1, 3002),
         dtype=int,
     )
-    # print(data.shape)
+    print(data.shape)
     cross_ranges = [
         [0, 1000],
         [1000, 2000],
         [2000, 3000],
         [3000, 4000],
         [4000, 5000],
-    ]
-    # debug
-    # data = data[:100]
-    cross_ranges = [
-        [0, 1000],
     ]
 
     for idx, train_range in enumerate(cross_ranges):
@@ -45,7 +39,7 @@ def single_fold(train_range: tuple[int, int], data):
 
     X_train = train_data[:, 0:-1]
     Y_train = train_data[:, -1].flat
-    nn = KNN(k=1)
+    nn = KNeighborsClassifier(n_neighbors=1)
     nn.fit(X_train, Y_train)
 
     X_test = test_data[:, 0:-1]
