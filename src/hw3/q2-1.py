@@ -1,14 +1,15 @@
 import math
 import numpy as np
 from matplotlib import pyplot as plt
-from sklearn.neighbors import KNeighborsClassifier
+
+from hw3.knn import KNN
 
 
 def main():
     data = np.loadtxt(fname="data/D2z.txt", delimiter=" ")
     X_train = data[:, 0:2]
     Y_train = data[:, 2].flat
-    nn = KNeighborsClassifier(n_neighbors=1)
+    nn = KNN(k=1)
     nn.fit(X_train, Y_train)
 
     plot_step = 0.1
@@ -23,11 +24,11 @@ def main():
     # )
     # print("plot", X_plot)
     Y_plot = nn.predict(X_plot)
-    print(Y_plot)
+    # print(Y_plot)
     plt.margins(0)
-    plt.scatter(X_plot[:, 0], X_plot[:, 1], c=Y_plot, marker=".", s=10)
+    plt.scatter(X_plot[:, 0], X_plot[:, 1], c=Y_plot, marker=".", s=20, cmap="RdYlBu")
 
-    plt.scatter(X_train[:, 0], X_train[:, 1], c=Y_train, marker="x")
+    plt.scatter(X_train[:, 0], X_train[:, 1], c=Y_train, marker="x", cmap="RdYlBu")
     plt.show()
 
 
